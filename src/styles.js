@@ -15,6 +15,10 @@ export const useStyle = makeStyles((theme) => ({
     height: "100vh",
     display: "flex",
     flexDirection: "column",
+    margin : "10px",
+    overflowY: "auto",
+    overflowX : "hidden",
+   
   },
   main: {
     flex: 1,
@@ -45,6 +49,9 @@ export const useStyle = makeStyles((theme) => ({
   },
   card: {
     margin: 10,
+  },
+  title : {
+    margin : 18,
   },
   media : {
       width : 200,
