@@ -6,6 +6,9 @@ import {
   PRODUCTS_LIST_REQUEST,
   PRODUCTS_LIST_SUCCESS,
   PRODUCTS_LIST_FAIL,
+  ORDER_ADD_ITEM,
+  ORDER_REMOVE_ITEM,
+  ORDER_CLEAR,
 } from "../Constants/constants";
 import axios from "axios";
 export const setOrderType = (dispatch, orderType) => {
@@ -35,3 +38,22 @@ export const listProducts = async (dispatch , categoryName = "") => {
     return dispatch({ type: PRODUCTS_LIST_FAIL, payload: error.message });
   }
 };
+export const addToOrder = async (dispatch , item)=>{
+  return dispatch({
+    type : ORDER_ADD_ITEM,
+    payload : item
+  })
+}
+
+export const removerFromOrder = async (dispatch , item)=>{
+  return dispatch({
+    type : ORDER_REMOVE_ITEM,
+    payload : item
+  })
+}
+
+export const clearOrder = async (dispatch)=>{
+  return dispatch({
+    type : ORDER_CLEAR,
+  })
+}

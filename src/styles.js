@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 export const useStyle = makeStyles((theme) => ({
   largeLogo: {
     height: "100px",
+    marginTop : "20px",
+    marginBottom : "20px"
   },
   logo: {
     height: "50px",
@@ -15,10 +17,9 @@ export const useStyle = makeStyles((theme) => ({
     height: "100vh",
     display: "flex",
     flexDirection: "column",
-    margin : "10px",
+    margin: "10px",
     overflowY: "auto",
-    overflowX : "hidden",
-   
+    overflowX: "hidden",
   },
   main: {
     flex: 1,
@@ -26,6 +27,8 @@ export const useStyle = makeStyles((theme) => ({
     flexDirection: "column",
     display: "flex",
     color: "#ffffff",
+   
+    padding : "10px"
   },
   center: {
     display: "flex",
@@ -36,7 +39,7 @@ export const useStyle = makeStyles((theme) => ({
   green: {
     backgroundColor: "#00b020",
   },
-  navvy: {
+  navy: {
     backgroundColor: "#003080",
   },
   cards: {
@@ -45,15 +48,44 @@ export const useStyle = makeStyles((theme) => ({
     alignItems: "center",
   },
   spacer: {
-      padding : 10,
+    padding: 10,
   },
   card: {
     margin: 10,
   },
-  title : {
-    margin : 18,
+  title: {
+    margin: 18,
   },
-  media : {
-      width : 200,
+  media: {
+    width: 200,
+  },
+  largeButton: {
+    width: 200,
+  },
+  largeInput: {
+    width: "60px!important",
+    padding: "0!important",
+    fontSize: "35px!important",
+    textAlign: "center!important",
+  },
+  bordered: {
+    borderWidth: 2,
+    borderRadius: 5,
+    margin: 5,
+    borderStyle: "solid",
+  },
+  row: {
+    display: "flex",
+    padding: 10,
+    justifyContent: "space-between",
+  },
+  around: {
+    justifyContent: "space-around",
+  },
+  between: {
+    justifyContent: "space-between",
+  },
+  column : {
+    flexDirection : "column"
   }
 }));
