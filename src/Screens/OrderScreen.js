@@ -80,7 +80,7 @@ const OrderScreen = (props) => {
   };
 
   return (
-    <Box className={styles.root}>
+    <Box style = {{height : "100vh"}} className={styles.root}>
        <Box className={styles.main}>
       <Dialog open={isOpen} maxWidth={true} onClose={closeHandler}>
         <DialogTitle className={styles.center}>Add {product.name}</DialogTitle>

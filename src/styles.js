@@ -14,7 +14,7 @@ export const useStyle = makeStyles((theme) => ({
     color: "#ffffff",
   },
   root: {
-    height: "100vh",
+    height: "90%",
     display: "flex",
     flexDirection: "column",
     margin: "10px",

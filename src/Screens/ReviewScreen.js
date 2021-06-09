@@ -49,7 +49,7 @@ const ReviewScreen = (props) => {
   };
 
   return (
-    <Box className={[styles.root]}>
+    <Box  style = {{height : "100vh"}} className={[styles.root]}>
       <Box className={[styles.main, styles.navy, styles.center]}>
         <Dialog open={isOpen} maxWidth={true} onClose={closeHandler}>
           <DialogTitle className={styles.center}>
