@@ -57,7 +57,7 @@ export const useStyle = makeStyles((theme) => ({
     margin: 18,
   },
   media: {
-    width: 200,
+    width: "200px!important",
   },
   largeButton: {
     width: 200,
