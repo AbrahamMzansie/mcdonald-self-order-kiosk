@@ -37,15 +37,67 @@ app.get("/api/products", async (req, res) => {
 });
 
 app.post("/api/products", async (req, res) => {
-  const newProduct = new Product(req.body);
-  const savedProduct = newProduct.save();
+  const newProduct = await new Product(req.body);
+  const savedProduct = await newProduct.save();
   res.send({ savedProduct });
 });
 
-app.get("/api/categories", (req, res) => {
+app.get("/api/categories", async (req, res) => {
   res.send(data.categories);
 });
 
+const Order = mongoose.model(
+  "Order",
+  new mongoose.Schema(
+    {
+      number: { type: Number, default: 0 },
+      orderType: String,
+      paymentType: String,
+      isPaid: { type: Boolean, default: false },
+      isReady: { type: Boolean, default: false },
+      inProgress: { type: Boolean, default: true },
+      isCancelled: { type: Boolean, default: false },
+      isDelivered: { type: Boolean, default: false },
+      itemsPrice: Number,
+      taxPrice: Number,
+      totalPrice: Number,
+      orderItems: [
+        {
+          name: String,
+          price: Number,
+          quantity: Number,
+        },
+      ],
+    },
+    {
+      timestamps: true,
+    }
+  )
+);
+
+app.post("/api/orderCreate", async (req, res) => {
+  const lastOrder = await Order.find().sort({ number: -1 }).limit(1);
+  const lastNumber = lastOrder.length === 0 ? 0 : lastOrder[0].number;
+  if (
+    !req.body.orderType ||
+    !req.body.paymentType ||
+    !req.body.orderItems ||
+    req.body.orderItems.length === 0
+  ) {
+    return res.send({ messsage: "Data is required" });
+  }
+  const order = await new Order({
+    ...req.body,
+    number: lastNumber + 1,
+  });
+
+  const savedData = await order.save();
+  if (savedData) {
+    return res.send(savedData);
+  } else {
+    return res.send({ message: "Error creating order" });
+  }
+});
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Serve at http://localhost:${port}`);

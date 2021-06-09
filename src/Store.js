@@ -10,6 +10,10 @@ import {
   ORDER_ADD_ITEM,
   ORDER_REMOVE_ITEM,
   ORDER_CLEAR,
+  ORDER_SET_PAYMENT_TYPE,
+  ORDER_CREATE_REQUEST,
+  ORDER_CREATE_SUCCESS,
+  ORDER_CREATE_FAIL,
 } from "./Constants/constants";
 
 export const Store = createContext();
@@ -20,7 +24,9 @@ const initialState = {
   order: {
     orderType: "Eat In",
     orderItems: [],
+    paymentType: "Pay Here",
   },
+  orderCreate: { loading: true },
 };
 
 const reducer = (state, action) => {
@@ -88,17 +94,26 @@ const reducer = (state, action) => {
       };
     }
 
-    case ORDER_CLEAR : 
+    case ORDER_CLEAR:
       return {
         ...state,
-        order : {
-          orderItems:[],
-          itemsCount : 0,
-          taxPrice : 0,
-          totalPrice : 0,
-        }
-      }
-    
+        order: {
+          orderItems: [],
+          itemsCount: 0,
+          taxPrice: 0,
+          totalPrice: 0,
+        },
+        
+      };
+
+    case ORDER_SET_PAYMENT_TYPE:
+      return {
+        ...state,
+        order: {
+          ...state.order,
+          paymentType: action.payload,
+        },
+      };
 
     case CATEGORY_LIST_REQUEST:
       return { ...state, categoryList: { loading: true } };
@@ -128,6 +143,24 @@ const reducer = (state, action) => {
       return {
         ...state,
         productList: { loading: false, error: action.payload },
+      };
+
+    case ORDER_CREATE_REQUEST:
+      return {
+        ...state,
+        orderCreate: { loading: true },
+      };
+
+    case ORDER_CREATE_SUCCESS:
+      return {
+        ...state,
+        orderCreate: { loading: false, newOrder: action.payload },
+      };
+
+    case ORDER_CREATE_FAIL:
+      return {
+        ...state,
+        orderCreate: { loading: false, error: action.payload },
       };
 
     default:

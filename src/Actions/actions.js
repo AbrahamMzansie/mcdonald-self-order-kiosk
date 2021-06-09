@@ -9,10 +9,14 @@ import {
   ORDER_ADD_ITEM,
   ORDER_REMOVE_ITEM,
   ORDER_CLEAR,
+  ORDER_SET_PAYMENT_TYPE,
+  ORDER_CREATE_REQUEST,
+  ORDER_CREATE_SUCCESS,
+  ORDER_CREATE_FAIL,
 } from "../Constants/constants";
 import axios from "axios";
 export const setOrderType = (dispatch, orderType) => {
-  return dispatch({
+  dispatch({
     type: ORDER_SET_TYPE,
     payload: orderType,
   });
@@ -22,38 +26,56 @@ export const listCagories = async (dispatch) => {
   dispatch({ type: CATEGORY_LIST_REQUEST });
   try {
     const { data } = await axios.get("/api/categories");
-    return dispatch({ type: CATEGORY_LIST_SUCCESS, payload: data });
+    dispatch({ type: CATEGORY_LIST_SUCCESS, payload: data });
   } catch (error) {
-    return dispatch({ type: CATEGORY_LIST_FAIL, payload: error.message });
+    dispatch({ type: CATEGORY_LIST_FAIL, payload: error.message });
   }
 };
 
-export const listProducts = async (dispatch , categoryName = "") => {
+export const listProducts = async (dispatch, categoryName = "") => {
   dispatch({ type: PRODUCTS_LIST_REQUEST });
   try {
     const { data } = await axios.get(`/api/products?category=${categoryName}`);
-    return dispatch({ type: PRODUCTS_LIST_SUCCESS, payload: data.products });
+    dispatch({ type: PRODUCTS_LIST_SUCCESS, payload: data.products });
   } catch (error) {
-   
-    return dispatch({ type: PRODUCTS_LIST_FAIL, payload: error.message });
+    dispatch({ type: PRODUCTS_LIST_FAIL, payload: error.message });
   }
 };
-export const addToOrder = async (dispatch , item)=>{
-  return dispatch({
-    type : ORDER_ADD_ITEM,
-    payload : item
-  })
-}
+export const addToOrder = async (dispatch, item) => {
+  dispatch({
+    type: ORDER_ADD_ITEM,
+    payload: item,
+  });
+};
 
-export const removerFromOrder = async (dispatch , item)=>{
-  return dispatch({
-    type : ORDER_REMOVE_ITEM,
-    payload : item
-  })
-}
+export const removerFromOrder = async (dispatch, item) => {
+  dispatch({
+    type: ORDER_REMOVE_ITEM,
+    payload: item,
+  });
+};
 
-export const clearOrder = async (dispatch)=>{
-  return dispatch({
-    type : ORDER_CLEAR,
-  })
-}
+export const clearOrder = async (dispatch) => {
+  dispatch({
+    type: ORDER_CLEAR,
+  });
+};
+
+export const setPaymentType = async (dispatch, paymentType) => {
+  dispatch({
+    type: ORDER_SET_PAYMENT_TYPE,
+    payload: paymentType,
+  });
+};
+
+export const createOrder = async (dispatch, order) => {
+  dispatch({ type: ORDER_CREATE_REQUEST });
+  try {
+    const { data } = await axios.post("/api/orderCreate", order);
+    console.log(data);
+    dispatch({ type: ORDER_CREATE_SUCCESS, payload: data });
+    dispatch({ type: ORDER_CLEAR });
+  } catch (error) {
+    dispatch({ type: ORDER_CREATE_FAIL, payload: error.message });
+  }
+};

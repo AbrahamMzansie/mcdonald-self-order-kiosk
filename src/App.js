@@ -10,6 +10,9 @@ import HomeScreen from "./Screens/HomeScreen";
 import ChooseScreen from "./Screens/ChooseScreen";
 import OrderScreen from "./Screens/OrderScreen";
 import ReviewScreen from "./Screens/ReviewScreen";
+import SelectPaymentScreen from "./Screens/SelectPaymentScreen";
+import PaymentScreen from "./Screens/PaymentScreen";
+import CompleteOrderScreen from "./Screens/CompleteOrderScreen";
 
 const theme = createMuiTheme({
   typography: {
@@ -38,12 +41,19 @@ function App() {
     <BrowserRouter>
       <MuiThemeProvider theme={theme}>
         <CssBaseline></CssBaseline>
-        <Container maxWidth = "md">
+        <Container maxWidth="md">
           <Paper>
-            <Route path = "/" exact = {true} component = {HomeScreen} />
+            <Route path="/" exact={true} component={HomeScreen} />
             <Route path="/choose" exact component={ChooseScreen}></Route>
             <Route path="/order" exact component={OrderScreen}></Route>
             <Route path="/review" exact component={ReviewScreen}></Route>
+            <Route
+              path="/select-payment"
+              exact
+              component={SelectPaymentScreen}
+            ></Route>
+            <Route path="/payment" exact component={PaymentScreen}></Route>
+            <Route path="/complete" exact component={CompleteOrderScreen}></Route>
           </Paper>
         </Container>
       </MuiThemeProvider>

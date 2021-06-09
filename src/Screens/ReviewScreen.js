@@ -10,6 +10,7 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
+import {Link} from "react-router-dom";
 import React, { useState, useContext } from "react";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
@@ -112,7 +113,7 @@ const ReviewScreen = (props) => {
           </Box>
         </Dialog>
         <Box className={[styles.center, styles.column]}>
-          <Logo large></Logo>
+        <Link to = "/"><Logo large></Logo></Link>
           <Typography
             gutterButton
             className={styles.title}

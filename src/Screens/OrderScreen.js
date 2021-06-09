@@ -16,6 +16,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
+import {Link} from "react-router-dom";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import React, { useEffect, useContext, useState } from "react";
@@ -152,7 +153,7 @@ const OrderScreen = (props) => {
               ) : (
                 <>
                   <ListItem onClick={() => categoryClickHandler()} button>
-                    <Logo logo></Logo>
+                  <Link to = "/"><Logo></Logo></Link>
                   </ListItem>
                   {categories.map((item) => (
                     <ListItem

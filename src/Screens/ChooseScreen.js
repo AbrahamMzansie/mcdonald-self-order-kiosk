@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Logo from "../components/Logo";
+import {Link} from "react-router-dom";
 import {
   Box,
   Card,
@@ -26,7 +27,7 @@ const ChooseScreen = (props) => {
     <Fade in={true}>
       <Box className={[styles.root, styles.navvy]}>
         <Box className={[styles.main, styles.center]}>
-          <Logo large/>
+        <Link to = "/"><Logo large></Logo></Link>
           <Typography gutterBottom component="h3" variant="h3">
             Where you will be eating today ?
           </Typography>
