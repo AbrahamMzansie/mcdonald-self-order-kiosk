@@ -1,0 +1,34 @@
+@media (max-width: 960px) {
+    
+    .logo {
+        margin: 0 auto !important;
+        justify-content: center !important;
+    }
+    .MuiGrid-container {
+        display: block !important;
+    }
+  .category {
+    border-bottom: 1px solid #FFC72C !important;
+    display: flex;
+    width: 100% !important;
+    margin : 10px auto !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    margin : 0 !important;
+  }
+  .product__list {
+    justify-content: center !important;
+  }
+  .main__category {
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+  }
+}
+
+@media (max-width: 484px) {
+    .MuiButton-root{
+     padding: 2px 5px !important;
+     width: 140px !important;
+    margin-right: 10px !important;
+    }
+}

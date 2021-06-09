@@ -13,6 +13,7 @@ import ReviewScreen from "./Screens/ReviewScreen";
 import SelectPaymentScreen from "./Screens/SelectPaymentScreen";
 import PaymentScreen from "./Screens/PaymentScreen";
 import CompleteOrderScreen from "./Screens/CompleteOrderScreen";
+import "./index.css";
 
 const theme = createMuiTheme({
   typography: {

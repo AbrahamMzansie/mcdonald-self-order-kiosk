@@ -144,7 +144,7 @@ const OrderScreen = (props) => {
       </Dialog>
       <Box className={styles.main}>
         <Grid container>
-          <Grid item md={2}>
+          <Grid classname = "main__category" item md={2}>
             <List>
               {loading ? (
                 <CircularProgress />
@@ -152,11 +152,12 @@ const OrderScreen = (props) => {
                 <Alert severity="error">{error}</Alert>
               ) : (
                 <>
-                  <ListItem onClick={() => categoryClickHandler()} button>
+                  <ListItem className = "logo" onClick={() => categoryClickHandler()} button>
                   <Link to = "/"><Logo></Logo></Link>
                   </ListItem>
                   {categories.map((item) => (
                     <ListItem
+                    className = "category"
                       onClick={() => categoryClickHandler(item.name)}
                       button
                       key={item.name}
@@ -170,6 +171,7 @@ const OrderScreen = (props) => {
           </Grid>
           <Grid item md={10}>
             <Typography
+            style = {{textAlign : "center"}}
               gutterBottom
               className={styles.title}
               variant="h2"
@@ -177,7 +179,7 @@ const OrderScreen = (props) => {
             >
               {categoryName || "Main Menu"}
             </Typography>
-            <Grid container spacing={1}>
+            <Grid  className = "product__list" container spacing={1}>
               {loadingProducts ? (
                 <CircularProgress />
               ) : errorProducts ? (

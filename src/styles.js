@@ -88,4 +88,5 @@ export const useStyle = makeStyles((theme) => ({
   column : {
     flexDirection : "column"
   }
+  
 }));
